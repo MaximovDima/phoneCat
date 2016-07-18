@@ -38,14 +38,28 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+
+   'urlManager' => [
+    'enablePrettyUrl' => true,
+    'enableStrictParsing' => true,
+    'showScriptName' => false,
+    'rules' => [
+        ['class' => 'yii\rest\UrlRule', 'controller' => 'phone'],
+    ],
+],
+
+        'request' => [
+            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'cookieValidationKey' => 'cookieValidationKey',
+            'parsers' => [
+        'application/json' => 'yii\web\JsonParser',
+    ],
+        ],  
+
+
+
+
+
     ],
     'params' => $params,
 ];
