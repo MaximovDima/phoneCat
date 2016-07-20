@@ -1,5 +1,5 @@
 <div class="phone-images">
-  <img ng-src="{{img}}" class="phone"
+  <img ng-src="{{$ctrl.phone.imageUrl}}" class="phone"
       ng-class="{selected: img === $ctrl.mainImageUrl}"
       ng-repeat="img in $ctrl.phone.images" />
 </div>
@@ -26,11 +26,11 @@
     <span>Battery</span>
     <dl>
       <dt>Type</dt>
-      <dd>{{$ctrl.phone.battery.type}}</dd>
+      <dd>{{$ctrl.phone.type}}</dd>
       <dt>Talk Time</dt>
-      <dd>{{$ctrl.phone.battery.talkTime}}</dd>
+      <dd>{{$ctrl.phone.talkTime}}</dd>
       <dt>Standby time (max)</dt>
-      <dd>{{$ctrl.phone.battery.standbyTime}}</dd>
+      <dd>{{$ctrl.phone.standbyTime}}</dd>
     </dl>
   </li>
   <li>
@@ -61,9 +61,9 @@
     <span>Android</span>
     <dl>
       <dt>OS Version</dt>
-      <dd>{{$ctrl.phone.android.os}}</dd>
+      <dd>{{$ctrl.phone.os}}</dd>
       <dt>UI</dt>
-      <dd>{{$ctrl.phone.android.ui}}</dd>
+      <dd>{{$ctrl.phone.ui}}</dd>
     </dl>
   </li>
   <li>

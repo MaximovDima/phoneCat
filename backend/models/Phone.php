@@ -13,6 +13,15 @@ use Yii;
  * @property string $imageUrl
  * @property string $snippet
  * @property string $carrier
+ * @property string $additionalFeatures
+ * @property string $os
+ * @property string $ui
+ * @property string $standbyTime
+ * @property string $talkTime
+ * @property string $type
+ * @property string $description
+ *
+ * @property Image[] $images
  */
 class Phone extends \yii\db\ActiveRecord
 {
@@ -30,9 +39,13 @@ class Phone extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'name', 'age', 'imageUrl', 'snippet', 'carrier'], 'required'],
+            [['id', 'name', 'age', 'imageUrl', 'snippet', 'carrier', 'additionalFeatures', 'standbyTime', 'talkTime', 'type', 'description'], 'required'],
             [['age'], 'integer'],
-            [['id', 'name', 'imageUrl', 'snippet', 'carrier'], 'string', 'max' => 100],
+            [['id'], 'string', 'max' => 50],
+            [['name', 'imageUrl', 'carrier'], 'string', 'max' => 100],
+            [['snippet', 'additionalFeatures', 'description'], 'string', 'max' => 1000],
+            [['os', 'ui', 'talkTime', 'type'], 'string', 'max' => 25],
+            [['standbyTime'], 'string', 'max' => 10],
             [['id'], 'unique'],
         ];
     }
@@ -49,6 +62,28 @@ class Phone extends \yii\db\ActiveRecord
             'imageUrl' => 'Image Url',
             'snippet' => 'Snippet',
             'carrier' => 'Carrier',
+            'additionalFeatures' => 'Additional Features',
+            'os' => 'Os',
+            'ui' => 'Ui',
+            'standbyTime' => 'Standby Time',
+            'talkTime' => 'Talk Time',
+            'type' => 'Type',
+            'description' => 'Description',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImages()
+    {
+        return $this->hasMany(Image::className(), ['id' => 'id'])->inverseOf('id0');
+    }
+
+    public function extraFields() {
+            return [
+                'images'
+                //'images' => ['images']
+            ];
     }
 }

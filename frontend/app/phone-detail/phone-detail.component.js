@@ -8,9 +8,9 @@ angular.
     controller: ['$stateParams', 'Phone',
       function PhoneDetailController($stateParams, Phone) {
         var self = this;
-        self.phone = Phone.get({phoneId: $stateParams.phoneId}, function(phone) {
-          self.setImage(phone.images[0]);
-        });
+        self.phone = Phone.get({phoneId: $stateParams.phoneId}, function(phone) { 
+         self.setImage(phone.images[0]);
+       });
 
         self.setImage = function setImage(imageUrl) {
           self.mainImageUrl = imageUrl;

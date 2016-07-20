@@ -10,7 +10,7 @@ angular.
         template: '<phone-list></phone-list>'
       }).
       state('details', {
-        url:"/phone/:phoneId",
+        url:"/phones/:phoneId",
         template: '<phone-detail></phone-detail>'
       });
       $urlRouterProvider.otherwise('/phones');

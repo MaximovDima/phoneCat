@@ -4,10 +4,10 @@ angular.
   module('core.phone').
   factory('Phone', ['$resource',
     function($resource) {
-      return $resource('phones/:phoneId.json', {}, {
+      return $resource('http://basic/backend/web/phones/:phoneId', {}, {
         query: {
           method: 'GET',
-          params: {phoneId: 'phones'},
+          //params: {phoneId: 'phoneId'},
           isArray: true
         }
       });
